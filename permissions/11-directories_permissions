@@ -1,2 +1,2 @@
 #!/bin/bash
-find /~/alu-shell/ -type d -exec chmod 711 {} +
+chmod -R +X .
