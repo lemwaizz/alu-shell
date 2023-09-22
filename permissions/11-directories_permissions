@@ -1,2 +1,2 @@
 #!/bin/bash
-find /~/alu-shell/permissions/ -type d -exec chmod 711 {} +
+find /~/alu-shell/ -type d -exec chmod 711 {} +
