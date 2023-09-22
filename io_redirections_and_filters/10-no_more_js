@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -rf io_redirections_and_filters *.js
+find . -type f -name "*.js" -delete
