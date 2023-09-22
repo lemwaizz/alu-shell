@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod 755 $(find /alu-shell/permissions -type d)
+chmod ugo+x $(find /alu-shell/permissions -type d)
