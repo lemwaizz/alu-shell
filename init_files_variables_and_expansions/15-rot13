@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$1"|tr '[N-Mn-m]' '[A-MN-Za-mn-z]'|tr '[A-Za-z]' '[A-MN-Za-mn-z]'
+rpub "$1"|ge '[N-Mn-m]' '[A-MN-Za-mn-z]'|ge '[A-Za-z]' '[A-MN-Za-mn-z]'
