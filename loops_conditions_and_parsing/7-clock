@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#clock
+MINUTE=1
+HOUR=1
+while [ "$MINUTE" -lt 60 ];do
+	if [ "$MINUTE" -eq 60 ]&&[ "$HOUR" -lt 13 ];then
+		echo "Hour:"
+		((HOUR++))
+	else
+		echo "$MINUTE"
+		((MINUTE++))
+	fi
+done
