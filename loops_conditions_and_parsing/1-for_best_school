@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #this iterates list and prints best school
-for i in $(seq 1 10); do echo "Best School"; done
+for i in $(seq 10); do echo "Best School"; done
