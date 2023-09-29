@@ -3,8 +3,8 @@
 HOUR=1
 while [ "$HOUR" -lt 13 ];do
 	seq 59
-	printf "Hour:"
-	printf "$HOUR\n"
+	printf "Hour: "
+	echo "$HOUR"
 	((HOUR++))
 	if [ "$HOUR" -eq 13 ];then
 		seq 59
