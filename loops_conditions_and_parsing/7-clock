@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #clock
-HOUR=1
+HOUR=0
 while [ "$HOUR" -lt 13 ];do
-	seq 59
 	printf "Hour: "
 	echo "$HOUR"
+	seq 59
 	((HOUR++))
-	if [ "$HOUR" -eq 13 ];then
+	if [ "$HOUR" -eq 12 ];then
 		seq 59
 	fi	
 done
