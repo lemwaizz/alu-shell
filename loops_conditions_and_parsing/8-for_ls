@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #first characters omitted
-find . -type f -perm -u+x >> files.txt
-for i in files.txt;do
-	cut -c 5- "$i"
-done
-rm files.txt
+for file in *;do
+    echo "$file" | cut -d '-' -f 2;
+done  
