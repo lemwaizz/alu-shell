@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #iterate through file to find bash
-ps -efo pid,comm | awk '//bash'
+ps auxf | awk '/bash/'
