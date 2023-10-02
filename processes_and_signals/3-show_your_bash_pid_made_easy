@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #iterate through file to find bash
-pgrep -l bash| tail -n 2
+pgrep -l bash
