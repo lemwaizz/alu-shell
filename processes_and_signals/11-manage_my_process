@@ -4,19 +4,19 @@ DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
 case "$1" in 
 	start)
 	echo "manage_my_process started"
-	start-stop-daemon --start --background --pidfile /var/run/my_process.pid --make-pidfile  --exec $DAEMON
+	start-stop-daemon --start --background --pidfile /var/run/my_process.pid --make-pidfile  --name $DAEMON
 	;;
 	stop)
-	start-stop-daemon --stop --pidfile /var/run/my_process.pid --remove-pidfile
+	start-stop-daemon --stop --name $DAEMON --pidfile /var/run/my_process.pid --remove-pidfile
 	echo "manage_my_process stopped"
 	;;
 	restart)
-	start-stop-daemon --stop --background --remove-pidfile /var/run/my_process.pid
-	start-stop-daemon --start --background --pidfile /var/run/my_process.pid --make-pidfile  --exec $DAEMON
+	start-stop-daemon --stop --name $DAEMON --pidfile /var/run/my_process.pid --remove-pidfile
+	start-stop-daemon --start --background --pidfile /var/run/my_process.pid --make-pidfile  --name $DAEMON
 	echo "manage_my_process restarted"
 	;;
 	*)
-	echo "Usage:manage_my_process {start|stop|restart}">&2
+	echo "Usage: manage_my_process {start|stop|restart}">&2
 	exit 1
 	;;
 esac	
