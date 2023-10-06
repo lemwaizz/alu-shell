@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #for managing my_process
 DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
 case "$1" in 
