@@ -3,19 +3,18 @@
 set -e
 PIDFILE=/var/run/my_process.pid
 DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
-export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 case "$1" in 
 	start)
 	echo "manage_my_process started"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $DAEMON 
+	start-stop-daemon --start --background --exec $DAEMON --make-pidfile --pidfile $PIDFILE
 	;;
 	stop)
-	start-stop-daemon --stop --quiet --oknodo  --pidfile $PIDFILE --remove-pidfile 
+	start-stop-daemon --stop --pidfile $PIDFILE --remove-pidfile 
 	echo "manage_my_process stopped"
 	;;
 	restart)
-	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE --remove-pidfile
-	start-stop-daemon --start --quiet  --pidfile $PIDFILE --make-pidfile --exec $DAEMON   
+	start-stop-daemon --stop  --pidfile $PIDFILE --remove-pidfile
+	start-stop-daemon --start --background --exec $DAEMON  --background  --make-pidfile --pidfile $PIDFILE   
 	echo "manage_my_process restarted"
 	;;
 	*)
