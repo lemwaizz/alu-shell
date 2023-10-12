@@ -7,11 +7,11 @@ case "$1" in
 	start-stop-daemon --start --startas $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile
 	;;
 	stop)
-	start-stop-daemon --stop  --pidfile /var/run/my_process.pid --remove-pidfile
+	start-stop-daemon --stop $DAEMON  --pidfile /var/run/my_process.pid --remove-pidfile
 	echo "manage_my_process stopped"
 	;;
 	restart)
-	start-stop-daemon --stop --pidfile /var/run/my_process.pid --remove-pidfile
+	start-stop-daemon --stop $DAEMON  --pidfile /var/run/my_process.pid --remove-pidfile
 	start-stop-daemon --start --startas $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile  
 	echo "manage_my_process restarted"
 	;;
