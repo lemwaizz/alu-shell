@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 #for managing my_process
-DAEMON=/sbin:/root/alu-shell/processes_and_signals/manage_my_process
+set -e
+
+DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 case "$1" in 
 	start)
 	echo "manage_my_process started"
-	start-stop-daemon --start --exec $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile
+	start-stop-daemon --start --quiet  --pidfile /var/run/my_process.pid --make-pidfile --exec $DAEMON
 	;;
 	stop)
-	start-stop-daemon --stop  --pidfile /var/run/my_process.pid --remove-pidfile --exec $DAEMON
+	start-stop-daemon --stop --quiet --oknodo  --pidfile /var/run/my_process.pid --remove-pidfile 
 	echo "manage_my_process stopped"
 	;;
 	restart)
-	start-stop-daemon --stop $DAEMON  --pidfile /var/run/my_process.pid --remove-pidfile
-	start-stop-daemon --start --exec $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile  
+	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile /var/run/my_process.pid --remove-pidfile
+	start-stop-daemon --start --quiet  --pidfile /var/run/my_process.pid --make-pidfile --exec $DAEMON  
 	echo "manage_my_process restarted"
 	;;
 	*)
-	echo "Usage: manage_my_process {start|stop|restart}">&2
+	echo "Usage "$1": manage_my_process {start|stop|restart}"
 	exit 1
 	;;
 esac	
