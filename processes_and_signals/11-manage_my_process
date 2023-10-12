@@ -3,12 +3,11 @@
 set -e
 PIDFILE=/var/run/my_process.pid
 DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
-DAEMON_OPTS="--baz=quux"
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 case "$1" in 
 	start)
 	echo "manage_my_process started"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $DAEMON --$DAEMON_OPTS
+	start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $DAEMON 
 	;;
 	stop)
 	start-stop-daemon --stop --quiet --oknodo  --pidfile $PIDFILE --remove-pidfile 
@@ -16,7 +15,7 @@ case "$1" in
 	;;
 	restart)
 	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE --remove-pidfile
-	start-stop-daemon --start --quiet  --pidfile $PIDFILE --make-pidfile --exec $DAEMON --$DAEMON_OPTS  
+	start-stop-daemon --start --quiet  --pidfile $PIDFILE --make-pidfile --exec $DAEMON   
 	echo "manage_my_process restarted"
 	;;
 	*)
